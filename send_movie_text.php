@@ -9,7 +9,7 @@ $phone_numbers = array(
 );
 
 // Retrieve the movie list from the API
-$movie_list_url = 'http://localhost/movie/api/gen/movie.php';
+$movie_list_url = '';
 $movie_list_json = file_get_contents($movie_list_url);
 if (!$movie_list_json) {
     die("Failed to retrieve movie list from API");
@@ -29,8 +29,8 @@ foreach ($movie_list->Movies as $movie) {
 $message_chunks = str_split($message_body, 1590);
 
 // Set up the Twilio client
-$sid    = "AC78ae7185f450d6921735158eea4d7d60";
-$token  = "bfc0d1d445ef03b697316bc7d2b9633e";
+$sid    = "";
+$token  = "";
 $client = new Client($sid, $token);
 
 // Send the message to each phone number in the array
@@ -41,7 +41,7 @@ foreach ($phone_numbers as $phone_number) {
             $phone_number,
             [
                 // A Twilio phone number you purchased at https://console.twilio.com
-                'from' => "whatsapp:+14155238886",
+                'from' => "",
                 // The body of the text message chunk
                 'body' => $chunk
             ]
